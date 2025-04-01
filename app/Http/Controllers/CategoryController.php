@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Admin\Category;
 
 class CategoryController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(3);
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -44,7 +49,7 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect('categories');
+        return redirect('admin/categories');
     }
 
     public function destroy($id)

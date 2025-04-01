@@ -1,7 +1,9 @@
 @extends('layouts.admin')
+{{-- حتى يرث القالب الجديد --}}
+{{-- @extends('layouts.app') --}}
 @section('content')
-    <div class="py-3">
-        <form action="{{ url('products/update/' . $product->id) }}" method="post">
+    <div class="py-3 px-4">
+        <form action="{{ route('product_update', $product->id) }}" method="post">
             @csrf
             @method('patch')
             <div class="mb-3">

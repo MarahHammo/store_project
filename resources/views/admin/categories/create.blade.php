@@ -1,7 +1,9 @@
 @extends('layouts.admin')
+{{-- حتى يرث القالب الجديد --}}
+{{-- @extends('layouts.app') --}}
 @section('content')
-    <div class="py-4">
-        <form action="{{url('categories/store')}}" method="post">
+    <div class="py-4 px-4">
+        <form action="{{route('category_store')}}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">اسم الصنف</label>
